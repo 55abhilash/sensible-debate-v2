@@ -36,7 +36,7 @@ jobs:
           ECR_REPOSITORY: sensible-debate
           IMAGE_TAG: latest
         run: |
-          docker buildx build --platform linux/arm64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --push .
+          docker buildx build --platform linux/arm64 --provenance=false -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --push .
 
       - name: Trigger EC2 Auto Scaling Instance Refresh
         run: |
