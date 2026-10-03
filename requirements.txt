@@ -1,0 +1,19 @@
+# Pinned to exact versions that are tested together. uvicorn's WebSocket
+# support and the `websockets` package version are tightly coupled - an
+# uvicorn/websockets mismatch is the single most common install problem
+# with this kind of app (it shows up as an ImportError mentioning
+# ServerProtocol/ServerConnection at startup). Pinning both here means
+# `pip install -r requirements.txt` always gets a matched pair, even if
+# something else on your machine already has a different websockets
+# version installed. See DEPLOYMENT.md / README.md if you ever need to
+# deliberately upgrade these.
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+websockets==17.1
+jinja2==3.1.6
+sqlalchemy==2.0.52
+pydantic==2.13.5
+python-multipart==0.0.32
+python-dotenv==1.2.3
+redis==8.1.0
+psycopg[binary]==3.3.6

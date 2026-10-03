@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="waiting-page" data-topic-id="{{ topic_id }}">
+    <div class="pulse" aria-hidden="true"><span></span></div>
+    <h1 id="waiting-title">Waiting for someone to join&hellip;</h1>
+    <p class="topic-title" id="waiting-topic-title">Loading topic&hellip;</p>
+    <p class="hint">Keep this tab open. You'll be moved into the debate the moment someone joins.</p>
+    <button class="btn btn-ghost" id="cancel-btn" type="button">Withdraw this topic</button>
+  </section>
+{% endblock %}
+{% block scripts %}
+  <script src="/static/js/identity.js"></script>
+  <script src="/static/js/waiting.js"></script>
+{% endblock %}

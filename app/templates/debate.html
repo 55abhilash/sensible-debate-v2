@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="debate" data-session-id="{{ session_id }}">
+    <div class="debate-topbar">
+      <div class="debate-topic">
+        <h1 id="debate-topic-title">Loading&hellip;</h1>
+        <p class="muted" id="debate-topic-description"></p>
+      </div>
+      <button class="btn btn-ghost" id="leave-btn" type="button">Leave</button>
+    </div>
+
+    <div class="phase-strip" id="phase-strip" data-phase="connecting">
+      <div class="phase-strip-top">
+        <span class="phase-dot" id="phase-dot" aria-hidden="true"></span>
+        <span class="phase-label" id="phase-label">Connecting&hellip;</span>
+        <span class="phase-timer" id="phase-timer">&nbsp;</span>
+      </div>
+      <div class="phase-bar"><div class="phase-bar-fill" id="phase-bar-fill"></div></div>
+    </div>
+
+    <div class="transcript" id="transcript"></div>
+
+    <div class="composer-area" id="composer-area">
+      <textarea id="argument-input" maxlength="4000" rows="6"
+                placeholder="Write your argument in full sentences. You have five minutes." disabled></textarea>
+      <div class="composer-footer">
+        <span class="word-count" id="word-count"></span>
+        <button id="send-btn" class="btn btn-primary" type="button" disabled>Send argument</button>
+      </div>
+    </div>
+
+    <div class="ended-banner" id="ended-banner" hidden>
+      <h2 id="ended-title">This debate has ended</h2>
+      <p id="ended-detail" class="muted"></p>
+      <a class="btn btn-primary" href="/">Start another topic</a>
+    </div>
+  </section>
+{% endblock %}
+{% block scripts %}
+  <script src="/static/js/identity.js"></script>
+  <script src="/static/js/debate.js"></script>
+{% endblock %}

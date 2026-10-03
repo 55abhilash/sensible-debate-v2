@@ -1,0 +1,8 @@
+# Copy to terraform.tfvars and adjust. Every variable has a sensible
+# default (see variables.tf) - the only one worth setting before your
+# first apply is domain_name, and even that can wait until you're ready
+# for HTTPS.
+
+# domain_name = "debate.yourdomain.com"   # a subdomain, not the bare apex - see DEPLOYMENT_AWS.md
+# aws_region  = "ap-south-1"
+# asg_max_size = 4

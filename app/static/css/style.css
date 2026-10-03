@@ -1,0 +1,401 @@
+/* ---------------------------------------------------------------------
+   Sensible Debate — design tokens
+   A quiet, paper-and-ink feel: this is meant to feel like exchanging
+   considered letters, not like a chat app. Two accent colours carry
+   real meaning inside the debate room (moss = reflect, ochre = your
+   turn); everywhere else the interface stays ink-on-paper.
+------------------------------------------------------------------------ */
+:root {
+  --ink: #1f2a33;
+  --ink-soft: #445059;
+  --muted: #6b7a74;
+  --paper: #eef1ee;
+  --surface: #fbfbf9;
+  --line: #d9ded9;
+  --line-strong: #c1c9c2;
+
+  --moss: #4f7462;
+  --moss-strong: #3c5b4c;
+  --moss-wash: #e4ebe6;
+
+  --ochre: #b5763e;
+  --ochre-strong: #955f30;
+  --ochre-wash: #f4e9dc;
+
+  --clay: #9c4f3f;
+
+  --font-display: "Fraunces", Georgia, "Iowan Old Style", serif;
+  --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --radius: 5px;
+  --content-width: 720px;
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: light; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 560;
+  line-height: 1.2;
+  margin: 0 0 0.4em;
+  color: var(--ink);
+}
+
+p { margin: 0 0 1em; }
+.muted { color: var(--muted); }
+
+a { color: var(--moss-strong); }
+
+::selection { background: var(--ochre-wash); }
+
+:focus-visible {
+  outline: 2px solid var(--ochre);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* --- layout shell --------------------------------------------------- */
+
+.site-header {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 28px 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 560;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+/* --- buttons ---------------------------------------------------------- */
+
+.btn {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--surface);
+}
+.btn-primary:hover { background: #32424d; }
+.btn-primary:disabled {
+  background: var(--line-strong);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--ink-soft);
+}
+.btn-ghost:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+/* --- home page --------------------------------------------------------- */
+
+.hero {
+  max-width: 620px;
+  margin: 48px 0 56px;
+}
+.hero h1 {
+  font-size: 2.35rem;
+  letter-spacing: -0.01em;
+}
+.hero .lede {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+.composer {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 28px 24px;
+  margin-bottom: 56px;
+}
+.composer h2 { font-size: 1.3rem; }
+.composer .hint { color: var(--muted); font-size: 0.92rem; margin-bottom: 20px; }
+
+.composer form label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin: 16px 0 6px;
+}
+.composer form label:first-of-type { margin-top: 0; }
+.composer .optional { color: var(--muted); font-weight: 400; }
+
+.composer input, .composer textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 11px 13px;
+  resize: vertical;
+}
+.composer input:focus, .composer textarea:focus {
+  border-color: var(--moss);
+}
+
+.composer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.topics h2 { font-size: 1.15rem; margin-bottom: 16px; }
+
+.topics-list { display: flex; flex-direction: column; gap: 12px; }
+
+.topic-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.topic-card-title {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  margin-bottom: 4px;
+}
+.topic-card-byline { font-size: 0.86rem; color: var(--muted); }
+.topic-card .btn { flex-shrink: 0; }
+
+.empty-state {
+  color: var(--muted);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+}
+
+/* --- waiting page ------------------------------------------------------ */
+
+.waiting-page {
+  max-width: 480px;
+  margin: 80px auto 0;
+  text-align: center;
+}
+.waiting-page .topic-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+.waiting-page .hint { color: var(--muted); font-size: 0.92rem; }
+
+.pulse {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--moss);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.pulse span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--moss);
+  animation: pulse-breathe 2.4s ease-in-out infinite;
+}
+@keyframes pulse-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(2.1); opacity: 1; }
+}
+
+/* --- debate room --------------------------------------------------------- */
+
+.debate-topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.debate-topic h1 { font-size: 1.5rem; }
+.debate-topic .muted { font-size: 0.92rem; max-width: 60ch; }
+
+.phase-strip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 18px 0;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.phase-strip-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 14px;
+}
+.phase-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--muted);
+  flex-shrink: 0;
+}
+.phase-label { font-weight: 500; flex-grow: 1; }
+.phase-timer {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  font-weight: 500;
+  color: var(--ink-soft);
+  min-width: 3.5em;
+  text-align: right;
+}
+.phase-bar { height: 3px; background: var(--line); }
+.phase-bar-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--muted);
+  transform-origin: left;
+  transition: transform 1s linear, background-color 300ms ease;
+}
+
+.phase-strip[data-phase="arguing-you"] .phase-dot,
+.phase-strip[data-phase="arguing-you"] .phase-bar-fill { background: var(--ochre); }
+.phase-strip[data-phase="arguing-you"] .phase-label { color: var(--ochre-strong); }
+
+.phase-strip[data-phase="arguing-opponent"] .phase-dot,
+.phase-strip[data-phase="arguing-opponent"] .phase-bar-fill { background: var(--ink-soft); }
+
+.phase-strip[data-phase="reflecting"] .phase-dot,
+.phase-strip[data-phase="reflecting"] .phase-bar-fill { background: var(--moss); }
+.phase-strip[data-phase="reflecting"] .phase-label { color: var(--moss-strong); }
+
+.phase-strip[data-phase="ended"] .phase-dot { background: var(--line-strong); }
+
+.transcript {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.transcript-entry {
+  border-left: 3px solid var(--line-strong);
+  padding: 2px 0 2px 18px;
+}
+.transcript-entry.mine { border-left-color: var(--ink); }
+.transcript-entry.theirs { border-left-color: var(--moss); }
+
+.transcript-entry-head {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.transcript-entry-head .name { font-weight: 600; color: var(--ink-soft); }
+
+.transcript-entry-text {
+  white-space: pre-wrap;
+  font-size: 1.01rem;
+}
+.transcript-entry.auto .transcript-entry-text {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.transcript-empty {
+  color: var(--muted);
+  font-size: 0.95rem;
+  padding: 8px 0 0 18px;
+}
+
+.composer-area textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  resize: vertical;
+}
+.composer-area textarea:disabled {
+  background: var(--paper);
+  color: var(--muted);
+}
+.composer-area textarea:focus { border-color: var(--ochre); }
+
+.composer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.word-count { font-size: 0.85rem; color: var(--muted); }
+
+.ended-banner {
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+}
+.ended-banner h2 { font-size: 1.4rem; }
+.ended-banner .btn { margin-top: 6px; }
+
+/* --- small screens -------------------------------------------------------- */
+
+@media (max-width: 560px) {
+  .hero h1 { font-size: 1.9rem; }
+  .debate-topbar { flex-direction: column; }
+  .topic-card { flex-direction: column; align-items: flex-start; }
+  .topic-card .btn { align-self: flex-start; }
+}

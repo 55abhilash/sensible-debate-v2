@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block header_action %}
+  <button class="btn btn-primary" id="open-composer-btn" type="button">Open a topic</button>
+{% endblock %}
+{% block content %}
+  <section class="hero">
+    <h1>A place to argue slowly.</h1>
+    <p class="lede">
+      Two strangers agree to talk about one topic. Five minutes each to make
+      a case in full sentences, two minutes of quiet to actually read what
+      the other person wrote. No replies mid-thought, no pile-ons — just one
+      voice, then the other.
+    </p>
+  </section>
+
+  <section class="composer" id="composer" hidden>
+    <h2>Open a topic</h2>
+    <p class="hint">Write it as something you have a real, unresolved opinion about — a question with more than one reasonable answer.</p>
+    <form id="composer-form">
+      <label for="topic-title">Topic</label>
+      <input id="topic-title" name="title" type="text" maxlength="200"
+             placeholder="Should remote work be the default for office jobs?" required>
+
+      <label for="topic-description">Context <span class="optional">(optional)</span></label>
+      <textarea id="topic-description" name="description" rows="3" maxlength="1000"
+                placeholder="A sentence or two on why you're asking, or where you stand."></textarea>
+
+      <div class="composer-actions">
+        <button type="button" class="btn btn-ghost" id="cancel-composer-btn">Cancel</button>
+        <button type="submit" class="btn btn-primary">Post topic and wait for someone</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="topics">
+    <h2>Open topics waiting for a second voice</h2>
+    <div id="topics-list" class="topics-list" aria-live="polite">
+      <p class="empty-state">Looking for open topics&hellip;</p>
+    </div>
+  </section>
+{% endblock %}
+{% block scripts %}
+  <script src="/static/js/identity.js"></script>
+  <script src="/static/js/home.js"></script>
+{% endblock %}
